@@ -1,6 +1,6 @@
 from models.DrugModel import DrugModel
 from flask import jsonify, request, json
-
+import pdb
 class DrugController:
     @staticmethod
     def index():
@@ -23,6 +23,7 @@ class DrugController:
     def store():
         data = json.loads(request.data)
         try:
+            DrugModel().fillable(data)
             result = DrugModel().store(data)
         except Exception as err:
             print(err)

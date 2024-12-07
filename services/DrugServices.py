@@ -14,6 +14,7 @@ class DrugServices(Item):
         
         obj["id"] = str(uuid4())
         obj["deleted"] = False
+        obj["subitem"] = self.subitem
         existing.append(obj)
         write(self.jsondata, existing)
         return obj
@@ -29,7 +30,7 @@ class DrugServices(Item):
         data = read(self.jsondata)
         for i in data:
             if i["id"] == id:
-                i["item"] = obj["item"]
+                i["name"] = obj["name"]
                 i["price"] = obj["price"]
                 break
         write(self.jsondata, data)
